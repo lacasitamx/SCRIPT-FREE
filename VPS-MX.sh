@@ -5,11 +5,11 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 apt install python -y > /dev/null 2>&1
 echo -ne '\e[97mCARGANDO:\033[1;37m\e[93m ###############                (50%)\r'
-#cd /usr/bin/
+cd /usr/bin/
 #wget https://www.dropbox.com/s/q118kiel62bovck/pytransform.tar >/dev/null 2>&1
 #tar -xf pytransform.tar > /dev/null 2>&1 
 #rm -rf pytransform.tar > /dev/null 2>&1
-#cd
+cd
 echo -ne '\e[97mCARGANDO:\033[1;37m\e[93m ######################         (75%)\r'
 wget https://raw.githubusercontent.com/lacasitamx/SCRIPT-FREE/master/zzupdate.sh -O /usr/bin/VPS-MX &> /dev/null
 chmod +x /usr/bin/VPS-MX
