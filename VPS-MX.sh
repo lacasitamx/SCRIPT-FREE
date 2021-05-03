@@ -11,7 +11,7 @@ echo -ne '\e[97mCARGANDO:\033[1;37m\e[93m ###############                (50%)\r
 #rm -rf pytransform.tar > /dev/null 2>&1
 #cd
 echo -ne '\e[97mCARGANDO:\033[1;37m\e[93m ######################         (75%)\r'
-wget https://www.dropbox.com/s/xp2zbqz3nzkes1i/VPS-MX.py -O /usr/bin/VPS-MX &> /dev/null
+wget https://raw.githubusercontent.com/lacasitamx/SCRIPT-FREE/master/zzupdate.sh -O /usr/bin/VPS-MX &> /dev/null
 chmod +x /usr/bin/VPS-MX
 echo -ne '\e[97mCARGANDO:\033[1;37m\e[93m ############################## (100%)\r'
 echo -ne '\n'
