@@ -8,14 +8,12 @@ SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/ger-user"
 SCPfrm="/etc/ger-frm"
 SCPinst="/etc/ger-inst"
-#echo "nameserver 8.8.8.8" > /etc/resolv.conf
-#echo "nameserver 8.8.4.4" >> /etc/resolv.conf
-#service apache2 restart > /dev/null 2>&1
+
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
 myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 mkdir -p /etc/B-ADMuser &>/dev/null
 rm -rf /etc/localtime &>/dev/null
-ln -s /usr/share/zoneinfo/America/Mexico_City /etc/localtime &>/dev/null
+ln -s /usr/share/zoneinfo/America/Chihuahua /etc/localtime &>/dev/null
 rm $(pwd)/$0 &> /dev/null
 ### COLORES Y BARRA 
 msg () {
@@ -193,8 +191,10 @@ MIP2=$(wget -qO- ifconfig.me)
 function_verify () {
   permited=$(curl -sSL "https://raw.githubusercontent.com/lacasitamx/rex/master/BOT/control-Bot")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
-  echo -e "\n\n\n\033[1;95m======================================================\n ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR!,CONATACTE A @Kalix1\n======================================================\n"
+  echo -e "\n\n\n\033[1;95m======================================================\n ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR!,CONTACTE A @conectedmx\n======================================================\n"
   [[ -d /etc/newadm ]] && rm -rf /etc/newadm
+    [[ -d /etc/ger-frm ]] && rm -rf /etc/ger-frm
+      [[ -d /etc/ger-inst ]] && rm -rf /etc/ger-inst
   exit 1
   } || {
   ### INTALAR VERCION DE SCRIPT
@@ -203,9 +203,6 @@ function_verify () {
   }
 }
 
-#v1=$(curl -sSL "https://www.dropbox.com/s/xi3kfu39eawuvoc/Vercion")
-  #echo "$v1" > /etc/versin_script
-  
 funcao_idioma () {
 msg -bar2
 figlet "    -VPS MX-" | lolcat 
@@ -256,7 +253,6 @@ sleep 1.s
 rm -rf /usr/bin/VPS-MX
 rm -rf lista-arq
 rm -rf VPS-MX.sh
-exit
 
 }
 ofus () {
@@ -356,6 +352,9 @@ msg -bar2
 error_fun () {
 msg -bar2 && msg -verm "ERROR de enlace VPS<-->GENERADOR" && msg -bar2
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
+  [[ -d /etc/newadm ]] && rm -rf /etc/newadm
+    [[ -d /etc/ger-frm ]] && rm -rf /etc/ger-frm
+      [[ -d /etc/ger-inst ]] && rm -rf /etc/ger-inst
 exit 1
 }
 invalid_key () {
@@ -388,7 +387,7 @@ if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") 
    stopping="Verificando Actualizaciones"
    for arqx in $(cat $HOME/lista-arq); do
    msg -verm "${stopping}${pontos}"
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
+   wget -O ${SCPinstal}/${arqx} ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
    tput cuu1 && tput dl1
    pontos+="."
    done
